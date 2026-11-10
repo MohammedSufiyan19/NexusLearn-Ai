@@ -1,16 +1,16 @@
 import os
-import pypdf
+
 import docx
-from pptx import Presentation
+import pypdf
 from langchain_core.documents import Document
-from typing import List
+from pptx import Presentation
 
 
 class PDFLoader:
     def __init__(self, file_path: str):
         self.file_path = file_path
 
-    def load(self) -> List[Document]:
+    def load(self) -> list[Document]:
         documents = []
         try:
             reader = pypdf.PdfReader(self.file_path)
@@ -36,7 +36,7 @@ class DOCXLoader:
     def __init__(self, file_path: str):
         self.file_path = file_path
 
-    def load(self) -> List[Document]:
+    def load(self) -> list[Document]:
         documents = []
         try:
             doc = docx.Document(self.file_path)
@@ -73,7 +73,7 @@ class PPTXLoader:
     def __init__(self, file_path: str):
         self.file_path = file_path
 
-    def load(self) -> List[Document]:
+    def load(self) -> list[Document]:
         documents = []
         try:
             prs = Presentation(self.file_path)
@@ -98,7 +98,7 @@ class PPTXLoader:
         return documents
 
 
-def load_document(file_path: str) -> List[Document]:
+def load_document(file_path: str) -> list[Document]:
     """
     Auto-detects file type and loads it.
     This is the single function the rest of the app calls.

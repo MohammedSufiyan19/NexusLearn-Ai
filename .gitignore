@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 .venv/
+*.db
+*.sqlite3
+*.sqlite
 
 # Environment - never push this
 .env

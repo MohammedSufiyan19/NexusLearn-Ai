@@ -62,7 +62,7 @@ export default function App() {
       }
 
       setMessages([...updatedMessages, aiMsg])
-    } catch (err) {
+    } catch {
       setMessages([
         ...updatedMessages,
         {
@@ -97,7 +97,7 @@ export default function App() {
           route: "system"
         }
       ])
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {

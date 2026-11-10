@@ -1,12 +1,12 @@
-from langgraph.graph import StateGraph, END
+from agent.nodes import generator_node, retriever_node, router_node
 from agent.state import AgentState
-from agent.nodes import router_node, retriever_node, generator_node
+from langgraph.graph import END, StateGraph
 
 
 def build_graph():
     """
     Builds and compiles the LangGraph agent.
-    
+
     Flow:
     router → retriever → generator → END
     """

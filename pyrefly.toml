@@ -1,0 +1,7 @@
+# Pyrefly Configuration for NexusLearn AI
+project-roots = [".", "backend"]
+search-path = ["backend", "."]
+python-interpreter-path = ".venv/Scripts/python.exe"
+
+[errors]
+missing-import = "warning"

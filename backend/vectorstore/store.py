@@ -1,9 +1,9 @@
 import os
 import shutil
-from typing import List
+
 from dotenv import load_dotenv
-from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
+from langchain_core.documents import Document
 from langchain_mistralai import MistralAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -22,7 +22,7 @@ splitter = RecursiveCharacterTextSplitter(
 )
 
 
-def add_documents(docs: List[Document]) -> int:
+def add_documents(docs: list[Document]) -> int:
     """
     Chunks and adds documents to FAISS.
     Returns number of chunks stored.
@@ -43,7 +43,7 @@ def add_documents(docs: List[Document]) -> int:
     return len(chunks)
 
 
-def search(query: str, k: int = 5, source_type: str = None) -> List[Document]:
+def search(query: str, k: int = 5, source_type: str = None) -> list[Document]:
     """
     Searches FAISS for relevant chunks.
     Optionally filter by source_type: 'pdf', 'docx', 'pptx'
@@ -67,7 +67,7 @@ def search(query: str, k: int = 5, source_type: str = None) -> List[Document]:
     return results[:k]
 
 
-def get_all_sources() -> List[dict]:
+def get_all_sources() -> list[dict]:
     """
     Returns list of all uploaded documents.
     Used by the sidebar in the UI.

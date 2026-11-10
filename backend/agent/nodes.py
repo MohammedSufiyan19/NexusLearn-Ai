@@ -1,7 +1,7 @@
+
 from agent.llm import get_llm
-from agent.tools import TOOL_MAP
 from agent.state import AgentState
-from vectorstore.store import search
+from agent.tools import TOOL_MAP
 
 
 def router_node(state: AgentState) -> AgentState:
@@ -77,7 +77,7 @@ def generator_node(state: AgentState) -> AgentState:
     Generates the final answer.
     Uses RAG context if available, otherwise free chat.
     """
-    query = state["query"]
+    state["query"]
     route = state["route"]
     context = state.get("context", "")
 

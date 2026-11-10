@@ -1,0 +1,48 @@
+name: NexusLearn CI Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-and-lint:
+    name: Lint, Test & Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-eval.txt
+
+      - name: Lint with Ruff
+        run: |
+          ruff check backend/ eval/ security/
+
+      - name: Run Pytest Suite (Isolation, Auth, Cache, Resilience, Security)
+        env:
+          DATABASE_URL: sqlite:///:memory:
+          JWT_SECRET_KEY: test_secret_key_minimum_32_characters_long_for_ci
+          ENVIRONMENT: test
+        run: |
+          pytest backend/tests/ -v
+
+      - name: Dependency Vulnerability Audit (pip-audit)
+        run: |
+          pip-audit --desc on
+
+      - name: Prompt Injection Benchmark Smoke Test
+        run: |
+          python -m security.run_attacks

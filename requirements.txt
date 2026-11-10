@@ -1,19 +1,38 @@
-langchain
-langchain-community
-langchain-groq
-langchain-mistralai
-langchain-google-genai
-langchain-core
-langchain-tavily
-langgraph
-langgraph-checkpoint-sqlite
-fastapi
-uvicorn
-pydantic
-python-dotenv
-pypdf
-python-docx
-python-pptx
-faiss-cpu
+# NexusLearn AI — Core Dependencies
+fastapi>=0.115.0
+uvicorn>=0.30.0
+pydantic>=2.7.0
+pydantic-settings>=2.0.0
+email-validator>=2.0.0
+python-dotenv>=1.0.0
+python-multipart>=0.0.9
 
-#model = llama-3.3-70b-versatile
+# Database & Vectors
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9
+pgvector>=0.3.0
+alembic>=1.13.0
+
+# Security & Auth
+pyjwt>=2.9.0
+argon2-cffi>=23.1.0
+
+# Cache & Redis
+redis>=5.0.0
+
+# Document loaders
+pypdf>=5.0.0
+python-docx>=1.1.0
+python-pptx>=1.0.0
+
+# LLM & RAG Framework
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-community>=0.3.0
+langchain-groq>=0.2.0
+langchain-mistralai>=0.2.0
+langchain-google-genai>=2.0.0
+langchain-tavily>=0.1.0
+langchain-text-splitters>=0.3.0
+langgraph>=0.2.0
+faiss-cpu>=1.8.0
